@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ainspire 2k25 - National Level Technical Symposium</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #0f172a;
+            color: #e2e8f0;
+            scroll-behavior: smooth;
+        }
+        
+        .gradient-text {
+            background: linear-gradient(90deg, #3b82f6, #ec4899);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .event-card {
+            transition: all 0.3s ease;
+            background: rgba(15, 23, 42, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .event-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            border-color: rgba(59, 130, 246, 0.5);
+        }
+        
+        .modal {
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+        
+        .hero-pattern {
+            background-image: radial-gradient(circle at 25% 50%, rgba(59, 130, 246, 0.1) 0%, transparent 50%);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-gray-900/80 backdrop-blur-md border-b border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0">
+                        <span class="text-2xl font-bold gradient-text">Ainspire 2k25</span>
+                    </div>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-4">
+                        <a href="#home" class="px-3 py-2 rounded-md text-sm font-medium text-blue-400 hover:text-white">Home</a>
+                        <a href="#about" class="px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-white">About</a>
+                        <a href="#events" class="px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-white">Events</a>
+                        <a href="#contact" class="px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-white">Contact</a>
+                    </div>
+                </div>
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="text-gray-300 hover:text-white focus:outline-none">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-gray-900/95">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#home" class="block px-3 py-2 rounded-md text-base font-medium text-blue-400 hover:text-white">Home</a>
+                <a href="#about" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white">About</a>
+                <a href="#events" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white">Events</a>
+                <a href="#contact" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-pattern pt-24 pb-16 md:pt-32 md:pb-24 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="relative z-10 text-center">
+                <h1 class="text-4xl md:text-6xl font-bold mb-6">
+                    <span class="gradient-text">Ainspire 2k25</span>
+                </h1>
+                <p class="text-xl md:text-2xl text-gray-300 mb-8 max-w-3xl mx-auto">
+                    National Level Technical Symposium<br>
+                    Organized by Department of AI & Data Science
+                </p>
+                <div class="flex flex-col sm:flex-row justify-center gap-4">
+                    <a href="#events" class="px-8 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-medium rounded-full hover:opacity-90 transition duration-300">
+                        Explore Events
+                    </a>
+                    <a href="#about" class="px-8 py-3 border border-blue-400 text-blue-400 font-medium rounded-full hover:bg-blue-900/30 transition duration-300">
+                        Learn More
+                    </a>
+                </div>
+            </div>
+            <div class="absolute top-0 left-0 w-full h-full opacity-20">
+                <div class="absolute top-1/4 left-1/4 w-64 h-64 bg-blue-600 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob"></div>
+                <div class="absolute top-1/3 right-1/4 w-64 h-64 bg-purple-600 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob animation-delay-2000"></div>
+                <div class="absolute bottom-1/4 left-1/2 w-64 h-64 bg-pink-600 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob animation-delay-4000"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-16 bg-gray-900/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 gradient-text">About The Event</h2>
+                <div class="w-20 h-1 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto mb-6"></div>
+                <p class="text-gray-300 max-w-3xl mx-auto">
+                    Ainspire 2k25 is a national level technical symposium organized by the Department of Artificial Intelligence and Data Science under the association "Algonest" at Indra Ganesan College of Engineering.
+                </p>
+            </div>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="event-card p-6 rounded-xl">
+                    <div class="text-blue-400 mb-4">
+                        <i class="fas fa-calendar-alt text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Date & Venue</h3>
+                    <p class="text-gray-400">September 19, 2025<br>Indra Ganesan College of Engineering</p>
+                </div>
+                <div class="event-card p-6 rounded-xl">
+                    <div class="text-purple-400 mb-4">
+                        <i class="fas fa-bullseye text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Our Vision</h3>
+                    <p class="text-gray-400">To inspire innovation and foster technical excellence among students across the nation.</p>
+                </div>
+                <div class="event-card p-6 rounded-xl">
+                    <div class="text-pink-400 mb-4">
+                        <i class="fas fa-users text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Organizers</h3>
+                    <p class="text-gray-400">Department of AI & Data Science<br>Association "Algonest"</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Events Section -->
+    <section id="events" class="py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 gradient-text">Events</h2>
+                <div class="w-20 h-1 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto mb-6"></div>
+                <p class="text-gray-300 max-w-3xl mx-auto">
+                    Explore our exciting lineup of technical and non-technical events designed to challenge and inspire.
+                </p>
+            </div>
+            
+            <!-- Technical Events -->
+            <div class="mb-16">
+                <h3 class="text-2xl font-bold mb-6 text-blue-400 flex items-center">
+                    <i class="fas fa-laptop-code mr-3"></i> Technical Events
+                </h3>
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <!-- Event 1 -->
+                    <div class="event-card rounded-xl overflow-hidden">
+                        <div class="h-40 bg-gradient-to-r from-blue-600 to-purple-600 flex items-center justify-center">
+                            <i class="fas fa-file-alt text-6xl text-white opacity-80"></i>
+                        </div>
+                        <div class="p-6">
+                            <h4 class="text-xl font-semibold mb-2">Paper Presentation</h4>
+                            <p class="text-gray-400 mb-4">Present your innovative ideas and research papers on cutting-edge technologies.</p>
+                            <button onclick="openModal('paper-presentation')" class="text-blue-400 hover:text-blue-300 text-sm font-medium">
+                                View Details <i class="fas fa-arrow-right ml-1"></i>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Event 2 -->
+                    <div class="event-card rounded-xl overflow-hidden">
+                        <div class="h-40 bg-gradient-to-r from-purple-600 to-pink-600 flex items-center justify-center">
+                            <i class="fas fa-chart-bar text-6xl text-white opacity-80"></i>
+                        </div>
+                        <div class="p-6">
+                            <h4 class="text-xl font-semibold mb-2">Data Analysis</h4>
+                            <p class="text-gray-400 mb-4">Showcase your analytical skills by deriving insights from complex datasets.</p>
+                            <button onclick="openModal('data-analysis')" class="text-blue-400 hover:text-blue-300 text-sm font-medium">
+                                View Details <i class="fas fa-arrow-right ml-1"></i>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Event 3 -->
+                    <div class="event-card rounded-xl overflow-hidden">
+                        <div class="h-40 bg-gradient-to-r from-pink-600 to-red-600 flex items-center justify-center">
+                            <i class="fas fa-question-circle text-6xl text-white opacity-80"></i>
+                        </div>
+                        <div class="p-6">
+                            <h4 class="text-xl font-semibold mb-2">AI Art Battle</h4>
+                            <p class="text-gray-400 mb-4">Test your technical knowledge in this fast-paced quiz competition.</p>
+                            <button onclick="openModal('technical-quiz')" class="text-blue-400 hover:text-blue-300 text-sm font-medium">
+                                View Details <i class="fas fa-arrow-right ml-1"></i>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Event 4 -->
+                    <div class="event-card rounded-xl overflow-hidden">
+                        <div class="h-40 bg-gradient-to-r from-red-600 to-orange-600 flex items-center justify-center">
+                            <i class="fas fa-film text-6xl text-white opacity-80"></i>
+                        </div>
+                        <div class="p-6">
+                            <h4 class="text-xl font-semibold mb-2">Creative Animations</h4>
+                            <p class="text-gray-400 mb-4">Showcase your animation skills and creativity in this visual storytelling event.</p>
+                            <button onclick="openModal('creative-animations')" class="text-blue-400 hover:text-blue-300 text-sm font-medium">
+                                View Details <i class="fas fa-arrow-right ml-1"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Non-Technical Events -->
+            <div>
+                <h3 class="text-2xl font-bold mb-6 text-purple-400 flex items-center">
+                    <i class="fas fa-gamepad mr-3"></i> Non-Technical Events
+                </h3>
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <!-- Event 1 -->
+                    <div class="event-card rounded-xl overflow-hidden">
+                        <div class="h-40 bg-gradient-to-r from-green-600 to-teal-600 flex items-center justify-center">
+                            <i class="fas fa-paint-brush text-6xl text-white opacity-80"></i>
+                        </div>
+                        <div class="p-6">
+                            <h4 class="text-xl font-semibold mb-2">Just A Minute</h4>
+                            <p class="text-gray-400 mb-4">Read the given paper, memorize the content, and recall it aloud. The more info you remember, the higher you score!</p>
+                            <button onclick="openModal('art-exhibition')" class="text-blue-400 hover:text-blue-300 text-sm font-medium">
+                                View Details <i class="fas fa-arrow-right ml-1"></i>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Event 2 -->
+                    <div class="event-card rounded-xl overflow-hidden">
+                        <div class="h-40 bg-gradient-to-r from-teal-600 to-cyan-600 flex items-center justify-center">
+                            <i class="fas fa-microphone-alt text-6xl text-white opacity-80"></i>
+                        </div>
+                        <div class="p-6">
+                            <h4 class="text-xl font-semibold mb-2">Dumb Charades</h4>
+                            <p class="text-gray-400 mb-4">Pick a clue from the bowl and act it out. Your team guesses the word/name within a minute!</p>
+                            <button onclick="openModal('debate-competition')" class="text-blue-400 hover:text-blue-300 text-sm font-medium">
+                                View Details <i class="fas fa-arrow-right ml-1"></i>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Event 3 -->
+                    <div class="event-card rounded-xl overflow-hidden">
+                        <div class="h-40 bg-gradient-to-r from-cyan-600 to-blue-600 flex items-center justify-center">
+                            <i class="fas fa-camera-retro text-6xl text-white opacity-80"></i>
+                        </div>
+                        <div class="p-6">
+                            <h4 class="text-xl font-semibold mb-2">Photography Contest</h4>
+                            <p class="text-gray-400 mb-4">Capture moments and showcase your photography skills.</p>
+                            <button onclick="openModal('photography-contest')" class="text-blue-400 hover:text-blue-300 text-sm font-medium">
+                                View Details <i class="fas fa-arrow-right ml-1"></i>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Event 4 <-->
+                    <div class="event-card rounded-xl overflow-hidden">
+                        <div class="h-40 bg-gradient-to-r from-yellow-600 to-orange-600 flex items-center justify-center">
+                            <i class="fas fa-trophy text-6xl text-white opacity-80"></i>
+                        </div>
+                        <div class="p-6">
+                            <h4 class="text-xl font-semibold mb-2">BGM Finding</h4>
+                            <p class="text-gray-400 mb-4">Identify the movie, series, or song from short background music clips. Fastest and most accurate wins!</p>
+                            <button onclick="openModal('treasure-hunt')" class="text-blue-400 hover:text-blue-300 text-sm font-medium">
+                                View Details <i class="fas fa-arrow-right ml-1"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Lunch & Refreshments Section -->
+    <section id="refreshments" class="py-16 bg-gray-900/50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold mb-4 gradient-text">Lunch & Refreshments</h2>
+        <div class="w-20 h-1 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto mb-6"></div>
+        <p class="text-gray-300 max-w-3xl mx-auto">
+            To keep you energized throughout the symposium, we have arranged refreshments and lunch for all participants.
+        </p>
+        </div>
+        <div class="grid md:grid-cols-2 gap-8">
+        <div class="event-card p-6 rounded-xl">
+            <div class="text-green-400 mb-4">
+            <i class="fas fa-coffee text-3xl"></i>
+            </div>
+            <h3 class="text-xl font-semibold mb-2">Refreshments</h3>
+            <p class="text-gray-400">Refreshments will be provided to all participants.</p>
+        </div>
+        <div class="event-card p-6 rounded-xl">
+            <div class="text-yellow-400 mb-4">
+            <i class="fas fa-utensils text-3xl"></i>
+            </div>
+            <h3 class="text-xl font-semibold mb-2">Lunch</h3>
+            <p class="text-gray-400">Delicious lunch will be served at the college Auditorium between 1:00 PM - 2:00 PM.</p>
+        </div>
+        </div>
+    </div>
+    </section>
+
+
+   <!-- Contact Section -->
+    <section id="contact" class="py-16 bg-gray-900/50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold mb-4 gradient-text">Contact Us</h2>
+        <div class="w-20 h-1 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto mb-6"></div>
+        <p class="text-gray-300 max-w-3xl mx-auto">
+            Have questions? Reach out to our organizing team for more information.
+        </p>
+        </div>
+
+    <div class="event-card p-8 rounded-xl space-y-8">
+      <!-- General Contact Info -->
+      <h3 class="text-xl font-semibold mb-6">Contact Information</h3>
+      <div class="space-y-4">
+        <div class="flex items-start">
+          <div class="text-blue-400 mt-1 mr-4">
+            <i class="fas fa-map-marker-alt"></i>
+          </div>
+          <div>
+            <h4 class="font-medium">Address</h4>
+            <p class="text-gray-400">Indra Ganesan College of Engineering,<br>Trichy, Tamil Nadu</p>
+          </div>
+        </div>
+
+        <div class="flex items-start">
+          <div class="text-purple-400 mt-1 mr-4">
+            <i class="fas fa-envelope"></i>
+          </div>
+          <div>
+            <h4 class="font-medium">Email</h4>
+            <p class="text-gray-400">aindssymposium2k25@gmail.com</p>
+          </div>
+        </div>
+
+        <div class="flex items-start">
+        </div>
+
+        <div class="flex items-start">
+          <div class="text-green-400 mt-1 mr-4">
+            <i class="fas fa-clock"></i>
+          </div>
+          <div>
+            <h4 class="font-medium">Event Timing</h4>
+            <p class="text-gray-400">September 19 , Friday ,2025<br>9:00 AM - 5:00 PM</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Student Coordinators -->
+      <div>
+        <h3 class="text-xl font-semibold mb-4">Student Coordinators</h3>
+        <ul class="space-y-2 text-gray-400">
+          <li><span class="font-medium text-white">Govindh </span> – +91 8681058703</li>
+          <li><span class="font-medium text-white">Prakash </span> – +91 7603835585</li>
+          <li><span class="font-medium text-white">Sams </span> – +91 8667600629</li>
+        </ul>
+      </div>
+
+      <!-- Staff Coordinators -->
+      <div>
+        <h3 class="text-xl font-semibold mb-4">Staff Coordinators</h3>
+        <ul class="space-y-2 text-gray-400">
+          <li><span class="font-medium text-white">Dr. Mohan Prabhu</span> – +91 9884285102</li>
+          <li><span class="font-medium text-white">R.Snekaa</span> – +91 6369504728</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+    <!-- Footer -->
+    <footer class="py-8 bg-gray-900 border-t border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <span class="text-xl font-bold gradient-text">Ainspire 2k25</span>
+                    <p class="text-gray-400 text-sm mt-1">National Level Technical Symposium</p>
+                </div>
+                <div class="text-gray-400 text-sm">
+                    <p>Organized by Department of AI & Data Science</p>
+                    <p>Under the association "Algonest"</p>
+                </div>
+            </div>
+            <div class="mt-8 pt-8 border-t border-gray-800 text-center text-gray-500 text-sm">
+                <p>&copy; 2025 Ainspire 2k25. Department of AI & Data Science. IGCE.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Event Modals -->
+    <!-- Paper Presentation Modal -->
+    <div id="paper-presentation-modal" class="modal fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 opacity-0 invisible transition-all duration-300">
+        <div class="event-card max-w-2xl w-full mx-4 max-h-[90vh] overflow-y-auto">
+            <div class="p-6">
+                <div class="flex justify-between items-start mb-4">
+                    <h3 class="text-2xl font-bold text-blue-400">Paper Presentation</h3>
+                    <button onclick="closeModal('paper-presentation')" class="text-gray-400 hover:text-white">
+                        <i class="fas fa-times text-xl"></i>
+                    </button>
+                </div>
+                <div class="mb-6">
+                    <h4 class="text-lg font-semibold mb-2 text-gray-300">Description</h4>
+                    <p class="text-gray-400 mb-4">
+                        Present your innovative ideas and research papers on cutting-edge technologies in AI and Data Science. This event provides a platform to showcase your research work to a panel of experts.
+                    </p>
+                    <h4 class="text-lg font-semibold mb-2 text-gray-300">Rules & Regulations</h4>
+                    <ul class="list-disc pl-5 text-gray-400 space-y-2 mb-4">
+                        <li>Maximum team size: 2 to 3 members</li>
+                        <li>Duration: 5 to 7 minutes presentation + 3 minutes Q&A</li>
+                        <li>PPT slides should be maximum 10 pages</li>
+                    </ul>
+                    <h4 class="text-lg font-semibold mb-2 text-gray-300">Recognitions</h4>
+                    <ul class="list-disc pl-5 text-gray-400 space-y-2">
+                        <li>1st Place - Shield + Certificate of Excellance</li>
+                        <li>2nd Place - Shield + Certificate of Excellence</li>
+                    </ul>
+                </div>
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <a href="https://forms.gle/rQv2DA7p6V8nVa3A7" target="_blank" class="px-6 py-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-medium rounded-lg hover:opacity-90 transition duration-300 text-center">
+                        Register Now
+                    </a>
+                    <button onclick="closeModal('paper-presentation')" class="px-6 py-2 border border-gray-600 text-gray-300 font-medium rounded-lg hover:bg-gray-800 transition duration-300">
+                        Close
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Data Analysis Modal -->
+    <div id="data-analysis-modal" class="modal fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 opacity-0 invisible transition-all duration-300">
+        <div class="event-card max-w-2xl w-full mx-4 max-h-[90vh] overflow-y-auto">
+            <div class="p-6">
+                <div class="flex justify-between items-start mb-4">
+                    <h3 class="text-2xl font-bold text-purple-400">Data Analysis</h3>
+                    <button onclick="closeModal('data-analysis')" class="text-gray-400 hover:text-white">
+                        <i class="fas fa-times text-xl"></i>
+                    </button>
+                </div>
+                <div class="mb-6">
+                    <h4 class="text-lg font-semibold mb-2 text-gray-300">Description</h4>
+                    <p class="text-gray-400 mb-4">
+                        Showcase your analytical skills by deriving insights from complex datasets. 
+                        This event allows you to demonstrate your ability to extract meaningful information from data. Participants will be given a dataset and specific questions to answer through their analysis.
+                    </p>
+                    <h4 class="text-lg font-semibold mb-2 text-gray-300">Rules & Regulations</h4>
+                    <ul class="list-disc pl-5 text-gray-400 space-y-2 mb-4">
+                        <li>Team of 1 to 2 members</li>
+                        <li>Duration: 30 minutes</li>
+                        <li>Allowed tools: Python, R, Excel, Tableau</li>
+                        <li>Internet access will be restricted</li>
+                        <li>Pre-installed software only</li>
+                        <li>Final submission should include code and report</li>
+                    </ul>
+                    <h4 class="text-lg font-semibold mb-2 text-gray-300">Recognitions
+                    <ul class="list-disc pl-5 text-gray-400 space-y-2">
+                        <li>1st Place - Shield + Certificate of Excellance</li>
+                        <li>2nd Place - Shield + Certificate of Excellance</li>
+                    </ul>
+                </div>
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <a href="https://forms.gle/rQv2DA7p6V8nVa3A7" target="_blank" class="px-6 py-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-medium rounded-lg hover:opacity-90 transition duration-300 text-center">
+                        Register Now
+                    </a>
+                    <button onclick="closeModal('data-analysis')" class="px-6 py-2 border border-gray-600 text-gray-300 font-medium rounded-lg hover:bg-gray-800 transition duration-300">
+                        Close
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Technical Quiz Modal -->
+    <div id="technical-quiz-modal" class="modal fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 opacity-0 invisible transition-all duration-300">
+        <div class="event-card max-w-2xl w-full mx-4 max-h-[90vh] overflow-y-auto">
+            <div class="p-6">
+                <div class="flex justify-between items-start mb-4">
+                    <h3 class="text-2xl font-bold text-pink-400">AI Art Battle</h3>
+                    <button onclick="closeModal('technical-quiz')" class="text-gray-400 hover:text-white">
+                        <i class="fas fa-times text-xl"></i>
+                    </button>
+                </div>
+                <div class="mb-6">
+                    <h4 class="text-lg font-semibold mb-2 text-gray-300">Description</h4>
+                    <p class="text-gray-400 mb-4">
+                        Recreate the given image using AI tools within the time limit. The closer your artwork matches the original, the higher your chance to win!
+                    </p>
+                    <h4 class="text-lg font-semibold mb-2 text-gray-300">Rules & Regulations</h4>
+                    <ul class="list-disc pl-5 text-gray-400 space-y-2 mb-4">
+                        <li>An original image will be shown to participants.</li>
+                        <li>Participants must recreate the same image using AI tools.</li>
+                        <li>Only approved AI tools (DALL·E, ChatGPT, Stable Diffusion, etc.) are allowed.</li>
+                        <li>Time limit: 15-20 minutes.</li>
+                        <li>Rewards will be given based on accuracy, similarity, and clarity of the recreated image</li>
+                    </ul>
+                    <h4 class="text-lg font-semibold mb-2 text-gray-300">Recognitions
+                    <ul class="list-disc pl-5 text-gray-400 space-y-2">
+                        <li>1st Place - Shield + Certificate of Excellance</li>
+                        <li>2nd Place - Certificate of Excellance</li>
+                    </ul>
+                </div>
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <a href="https://forms.gle/rQv2DA7p6V8nVa3A7" target="_blank" class="px-6 py-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-medium rounded-lg hover:opacity-90 transition duration-300 text-center">
+                        Register Now
+                    </a>
+                    <button onclick="closeModal('technical-quiz')" class="px-6 py-2 border border-gray-600 text-gray-300 font-medium rounded-lg hover:bg-gray-800 transition duration-300">
+                        Close
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Creative Animations Modal -->
+    <div id="creative-animations-modal" class="modal fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 opacity-0 invisible transition-all duration-300">
+        <div class="event-card max-w-2xl w-full mx-4 max-h-[90vh] overflow-y-auto">
+            <div class="p-6">
+                <div class="flex justify-between items-start mb-4">
+                    <h3 class="text-2xl font-bold text-orange-400">Creative Animations</h3>
+                    <button onclick="closeModal('creative-animations')" class="text-gray-400 hover:text-white">
+                        <i class="fas fa-times text-xl"></i>
+                    </button>
+                </div>
+                <div class="mb-6">
+                    <h4 class="text-lg font-semibold mb-2 text-gray-300">Description</h4>
+                    <p class="text-gray-400 mb-4">
+                        Showcase your animation skills and creativity in this visual storytelling event. Create short animations on given themes using any animation software.
+                    </p>
+                    <h4 class="text-lg font-semibold mb-2 text-gray-300">Rules & Regulations</h4>
+                    <ul class="list-disc pl-5 text-gray-400 space-y-2 mb-4">
+                        <li>Individual or team (max 3 members)</li>
+                        <li>Allowed tools: Pencil2D or any other 2D animation software.</li>
+                        <li>Content must be original and free from plagiarism.</li>
+                        <li>Inappropriate, offensive, or copyrighted material is not allowed.</li>
+                        <li>Judging will be based on creativity, originality, smoothness, and presentation.</li>
+                        <li>Duration: 10-30 seconds</li>
+                    </ul>
+                    <h4 class="text-lg font-semibold mb-2 text-gray-300">Recognitions</h4>
+                    <ul class="list-disc pl-5 text-gray-400 space-y-2">
+                        <li>1st Place - Shield + Certificate of Excellance</li>
+                        <li>2nd Place - Shield + Certificate of Excellance</li>
+                    </ul>
+                </div>
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <a href="https://forms.gle/45N7ZpkTexPrgvAG6" target="_blank" class="px-6 py-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-medium rounded-lg hover:opacity-90 transition duration-300 text-center">
+                        Register Now
+                    </a>
+                    <button onclick="closeModal('creative-animations')" class="px-6 py-2 border border-gray-600 text-gray-300 font-medium rounded-lg hover:bg-gray-800 transition duration-300">
+                        Close
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Non-Technical Event Modals -->
+    <!-- Art Exhibition Modal -->
+    <div id="art-exhibition-modal" class="modal fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 opacity-0 invisible transition-all duration-300">
+        <div class="event-card max-w-2xl w-full mx-4 max-h-[90vh] overflow-y-auto">
+            <div class="p-6">
+                <div class="flex justify-between items-start mb-4">
+                    <h3 class="text-2xl font-bold text-green-400">Just A Minute</h3>
+                    <button onclick="closeModal('art-exhibition')" class="text-gray-400 hover:text-white">
+                        <i class="fas fa-times text-xl"></i>
+                    </button>
+                </div>
+                <div class="mb-6">
+                    <h4 class="text-lg font-semibold mb-2 text-gray-300">Description</h4>
+                    <p class="text-gray-400 mb-4">
+                        Speak on a given topic for one minute without hesitation, repetition, or deviation. Quick thinking wins!
+                    </p>
+                    <p class="text-gray-400 mb-4">.
+                    </p>
+                    <h4 class="text-lg font-semibold mb-2 text-gray-300">Rules & Regulations</h4>
+                    <ul class="list-disc pl-5 text-gray-400 space-y-2 mb-4">
+                        <li>Each participant will be given one paper with information.</li>
+                        <li>One minute is given to read and memorize the content.</li>
+                        <li>Participants must recall the content within the given time.</li>
+                        <li>Marks are awarded based on accuracy, completeness, and clarity.</li>
+                        <li>Any use of mobile phones or external help is strictly prohibited.</li>
+                    </ul>
+                    <h4 class="text-lg font-semibold mb-2 text-gray-300">Recognitions</h4>
+                    <ul class="list-disc pl-5 text-gray-400 space-y-2">
+                        <li>1st Place - Shield + Certificate of Excellance</li>
+                        <li>2nd Place - Certificate of Excellance</li>
+                    </ul>
+                </div>
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <a href="https://forms.gle/wYzUV595FTeNP2NR9" target="_blank" class="px-6 py-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-medium rounded-lg hover:opacity-90 transition duration-300 text-center">
+                        Register Now
+                    </a>
+                    <button onclick="closeModal('art-exhibition')" class="px-6 py-2 border border-gray-600 text-gray-300 font-medium rounded-lg hover:bg-gray-800 transition duration-300">
+                        Close
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Debate Competition Modal -->
+    <div id="debate-competition-modal" class="modal fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 opacity-0 invisible transition-all duration-300">
+        <div class="event-card max-w-2xl w-full mx-4 max-h-[90vh] overflow-y-auto">
+            <div class="p-6">
+                <div class="flex justify-between items-start mb-4">
+                    <h3 class="text-2xl font-bold text-teal-400">Dumb Charades</h3>
+                    <button onclick="closeModal('debate-competition')" class="text-gray-400 hover:text-white">
+                        <i class="fas fa-times text-xl"></i>
+                    </button>
+                </div>
+                <div class="mb-6">
+                    <h4 class="text-lg font-semibold mb-2 text-gray-300">Description</h4>
+                    <p class="text-gray-400 mb-4">
+                       Act out movies, phrases, or words without speaking while your team guesses. Fun, fast, and full of laughter!
+                    </p>
+                    <h4 class="text-lg font-semibold mb-2 text-gray-300">Rules & Regulations</h4>
+                    <ul class="list-disc pl-5 text-gray-400 space-y-2 mb-4">
+                        <li>Team size: 2 members (for/against)</li>
+                        <li>Participants are not allowed to speak, write, or point to objects.</li>
+                        <li>Only gestures and actions can be used to convey the clue.</li>
+                        <li>Each team will be given a fixed time (e.g., 1 minute) to guess.</li>
+                        <li>Correct guesses earn points; no points for skipped or wrong answers.</li>
+                        <li>The team with the highest points at the end wins.</li>
+                    </ul>
+                    <h4 class="text-lg font-semibold mb-2 text-gray-300">Recognitions</h4>
+                    <ul class="list-disc pl-5 text-gray-400 space-y-2">
+                        <li>1st Place - Shield + Certificate of Excellance</li>
+                        <li>2nd Place - Certificate of Excellance</li>
+                    </ul>
+                </div>
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <a href="https://forms.gle/wYzUV595FTeNP2NR9" target="_blank" class="px-6 py-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-medium rounded-lg hover:opacity-90 transition duration-300 text-center">
+                        Register Now
+                    </a>
+                    <button onclick="closeModal('debate-competition')" class="px-6 py-2 border border-gray-600 text-gray-300 font-medium rounded-lg hover:bg-gray-800 transition duration-300">
+                        Close
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Photography Contest Modal -->
+    <div id="photography-contest-modal" class="modal fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 opacity-0 invisible transition-all duration-300">
+        <div class="event-card max-w-2xl w-full mx-4 max-h-[90vh] overflow-y-auto">
+            <div class="p-6">
+                <div class="flex justify-between items-start mb-4">
+                    <h3 class="text-2xl font-bold text-cyan-400">Photography Contest</h3>
+                    <button onclick="closeModal('photography-contest')" class="text-gray-400 hover:text-white">
+                        <i class="fas fa-times text-xl"></i>
+                    </button>
+                </div>
+                <div class="mb-6">
+                    <h4 class="text-lg font-semibold mb-2 text-gray-300">Description</h4>
+                    <p class="text-gray-400 mb-4">
+                        Capture moments and showcase your photography skills. Submit your best shots based on the given theme.
+                    </p>
+                    <h4 class="text-lg font-semibold mb-2 text-gray-300">Rules & Regulations</h4>
+                    <ul class="list-disc pl-5 text-gray-400 space-y-2 mb-4">
+                        <li>Individual participation only</li>
+                        <li>Theme will be given on the spot.</li>
+                        <li>Photos must be original and unedited (basic corrections allowed)</li>
+                        <li>Format: JPEG </li>
+                    </ul>
+                    <h4 class="text-lg font-semibold mb-2 text-gray-300">Recognitions</h4>
+                    <ul class="list-disc pl-5 text-gray-400 space-y-2">
+                        <li>1st Prize: Shield + Certificate of Excellence</li>
+                        <li>2nd Prize: Certificate of Excellence</li>
+                    </ul>
+                </div>
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <a href="https://forms.gle/wYzUV595FTeNP2NR9" target="_blank" class="px-6 py-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-medium rounded-lg hover:opacity-90 transition duration-300 text-center">
+                        Register Now
+                    </a>
+                    <button onclick="closeModal('photography-contest')" class="px-6 py-2 border border-gray-600 text-gray-300 font-medium rounded-lg hover:bg-gray-800 transition duration-300">
+                        Close
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Treasure Hunt Modal -->
+    <div id="treasure-hunt-modal" class="modal fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 opacity-0 invisible transition-all duration-300">
+        <div class="event-card max-w-2xl w-full mx-4 max-h-[90vh] overflow-y-auto">
+            <div class="p-6">
+                <div class="flex justify-between items-start mb-4">
+                    <h3 class="text-2xl font-bold text-yellow-400">BGM Finding</h3>
+                    <button onclick="closeModal('treasure-hunt')" class="text-gray-400 hover:text-white">
+                        <i class="fas fa-times text-xl"></i>
+                    </button>
+                </div>
+                <div class="mb-6">
+                    <h4 class="text-lg font-semibold mb-2 text-gray-300">Description</h4>
+                    <p class="text-gray-400 mb-4">
+                        Solve clues and find hidden treasures in this exciting adventure across the college campus. Test your problem-solving skills and teamwork.
+                    </p>
+                    <h4 class="text-lg font-semibold mb-2 text-gray-300">Rules & Regulations</h4>
+                    <ul class="list-disc pl-5 text-gray-400 space-y-2 mb-4">
+                        <li>Team size: 1-3 members</li>
+                        <li>Music clips will be played for a few seconds only.</li>
+                        <li>Participants must identify the correct movie/series/song within the given time.</li>
+                        <li>No use of mobile phones or external help is allowed.</li>
+                        <li>Points are awarded for accuracy and speed.</li>
+                        <li>In case of a tie, a bonus round will decide the winner.</li>
+                    </ul>
+                </div>
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <a href="https://forms.gle/wYzUV595FTeNP2NR9" target="_blank" class="px-6 py-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-medium rounded-lg hover:opacity-90 transition duration-300 text-center">
+                        Register Now
+                    </a>
+                    <button onclick="closeModal('treasure-hunt')" class="px-6 py-2 border border-gray-600 text-gray-300 font-medium rounded-lg hover:bg-gray-800 transition duration-300">
+                        Close
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+                // Close mobile menu if open
+                document.getElementById('mobile-menu').classList.add('hidden');
+            });
+        });
+
+        // Modal functions
+        function openModal(modalId) {
+            const modal = document.getElementById(`${modalId}-modal`);
+            modal.classList.remove('invisible', 'opacity-0');
+            modal.classList.add('visible', 'opacity-100');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal(modalId) {
+            const modal = document.getElementById(`${modalId}-modal`);
+            modal.classList.remove('visible', 'opacity-100');
+            modal.classList.add('invisible', 'opacity-0');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close modal when clicking outside
+        document.querySelectorAll('.modal').forEach(modal => {
+            modal.addEventListener('click', function(e) {
+                if (e.target === this) {
+                    const modalId = this.id.replace('-modal', '');
+                    closeModal(modalId);
+                }
+            });
+        });
+
+        // Form submission
+        const contactForm = document.querySelector('form');
+        if (contactForm) {
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                alert('Thank you for your message! We will get back to you soon.');
+                this.reset();
+            });
+        }
+    </script>
+</body>
+</html>
