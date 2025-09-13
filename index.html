@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AInspire 2k25 - National Level Technical Symposium</title>
     <!-- Favicon -->
-    <link rel="icon" type="img/jpg" href="favicon.jpg">
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" type="image/jpg" href="favicon.jpg">
+    <!--     <link rel="shortcut icon" href="favicon.jpg" type="image/x-icon"> -->
 
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -32,6 +32,11 @@
             background: rgba(15, 23, 42, 0.7);
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.1);
+            transform: scale(0.95);
+        }
+        .modal.visible .event-card {
+            transform: scale(1);
+            transition: transform 0.3s ease;
         }
         
         .event-card:hover {
@@ -46,6 +51,10 @@
         
         .hero-pattern {
             background-image: radial-gradient(circle at 25% 50%, rgba(59, 130, 246, 0.1) 0%, transparent 50%);
+        }
+        #countdown {
+            text-shadow: 0 0 8px rgba(59, 130, 246, 0.8);
+            letter-spacing: 1px;
         }
     </style>
 </head>
@@ -91,33 +100,34 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero-pattern pt-24 pb-16 md:pt-32 md:pb-24 relative overflow-hidden">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="relative z-10 text-center">
-                <h1 class="text-4xl md:text-6xl font-bold mb-6">
-                    <span class="gradient-text">AInspire 2k25</span>
-                </h1>
-                <p class="text-xl md:text-2xl text-gray-300 mb-8 max-w-3xl mx-auto">
-                    National Level Technical Symposium<br>
-                    Organized by Department of Artificial Intelligence & Data Science
-                </p>
-                <div class="flex flex-col sm:flex-row justify-center gap-4">
-                    <a href="#events" class="px-8 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-medium rounded-full hover:opacity-90 transition duration-300">
-                        Explore Events
-                    </a>
-                    <a href="#about" class="px-8 py-3 border border-blue-400 text-blue-400 font-medium rounded-full hover:bg-blue-900/30 transition duration-300">
-                        Learn More
-                    </a>
-                </div>
+            <!-- Hero Section -->
+        <section class="relative min-h-screen flex items-center justify-center hero-pattern">
+        <div class="text-center px-6">
+            <h1 class="text-4xl sm:text-6xl font-extrabold gradient-text mb-4">AInspire 2k25</h1>
+            <p class="text-lg sm:text-xl text-gray-300 mb-6">National Level Technical Symposium</p>
+
+            <p class="text-md text-gray-300 mb-5">
+                📢 Open to <strong>all streams and departments</strong> – everyone can participate!
+            </p>
+
+
+            <!-- Countdown Box -->
+            <div id="countdown" 
+                class="mt-6 px-6 py-3 rounded-xl text-2xl font-bold 
+                        bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 
+                        text-white shadow-lg inline-block">
+            <i class="fas fa-hourglass-half mr-2"></i>
+            <!-- Timer will be inserted here by JS -->
             </div>
-            <div class="absolute top-0 left-0 w-full h-full opacity-20">
-                <div class="absolute top-1/4 left-1/4 w-64 h-64 bg-blue-600 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob"></div>
-                <div class="absolute top-1/3 right-1/4 w-64 h-64 bg-purple-600 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob animation-delay-2000"></div>
-                <div class="absolute bottom-1/4 left-1/2 w-64 h-64 bg-pink-600 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob animation-delay-4000"></div>
+
+            <!-- Buttons -->
+            <div class="mt-8 flex justify-center gap-4">
+            <a href="#events" class="px-6 py-3 rounded-lg bg-blue-600 hover:bg-blue-700 text-white font-medium transition">Explore Events</a>
+            <a href="#about" class="px-6 py-3 rounded-lg border border-gray-500 text-gray-300 hover:bg-gray-800 transition">Learn More</a>
             </div>
         </div>
-    </section>
+        </section>
+
 
     <!-- About Section -->
     <section id="about" class="py-16 bg-gray-900/50">
@@ -618,326 +628,289 @@
 
     <!-- Event Modals -->
     <!-- Paper Presentation Modal -->
-    <div id="paper-presentation-modal" class="modal fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 opacity-0 invisible transition-all duration-300">
-        <div class="event-card max-w-2xl w-full mx-4 max-h-[90vh] overflow-y-auto">
-            <div class="p-6">
-                <div class="flex justify-between items-start mb-4">
-                    <h3 class="text-2xl font-bold text-blue-400">Paper Presentation</h3>
-                    <button onclick="closeModal('paper-presentation')" class="text-gray-400 hover:text-white">
-                        <i class="fas fa-times text-xl"></i>
-                    </button>
-                </div>
-                <div class="mb-6">
-                    <h4 class="text-lg font-semibold mb-2 text-gray-300">Description</h4>
-                    <p class="text-gray-400 mb-4">
-                        Present your innovative ideas and research papers on cutting-edge technologies in AI and Data Science. This event provides a platform to showcase your research work to a panel of experts.
-                    </p>
-                    <h4 class="text-lg font-semibold mb-2 text-gray-300">Rules & Regulations</h4>
-                    <ul class="list-disc pl-5 text-gray-400 space-y-2 mb-4">
-                        <li>Maximum team size: 2 to 3 members</li>
-                        <li>Topics : AI & ML and Data Science & latest models Research are preferred</li>
-                        <li>Duration: 5 to 7 minutes presentation + 3 minutes Q&A</li>
-                        <li>PPT slides should be maximum 10 pages</li>
-                        <li>Submit your presentation slides in advance to: <span class="font-semibold text-blue-400">algonest49@gmail.com</span></li>
-                        <li>Submission Deadline : september 17th 2025, 11:59 PM</li>
-                    </ul>
-                    <h4 class="text-lg font-semibold mb-2 text-gray-300">Recognitions</h4>
-                    <ul class="list-disc pl-5 text-gray-400 space-y-2">
-                        <li>1st Place - Shield + Certificate of Excellance</li>
-                        <li>2nd Place - Shield + Certificate of Excellence</li>
-                    </ul>
-                </div>
-                <div class="flex flex-col sm:flex-row gap-4">
-                   
-                    <button onclick="closeModal('paper-presentation')" class="px-6 py-2 border border-gray-600 text-gray-300 font-medium rounded-lg hover:bg-gray-800 transition duration-300">
-                        Close
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
+  <div id="paper-presentation-modal" class="modal fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 opacity-0 invisible transition-all duration-300">
+    <div class="event-card max-w-2xl w-full mx-4 max-h-[90vh] overflow-y-auto">
+      <div class="p-6">
+        <div class="flex justify-between items-start mb-4">
+          <h3 class="text-2xl font-bold text-blue-400"><i class="fas fa-file-alt mr-2"></i> Paper Presentation</h3>
 
+          <button onclick="closeModal('paper-presentation')" class="text-gray-400 hover:text-white">
+            <i class="fas fa-times text-xl"></i>
+          </button>
+        </div>
+        <div class="mb-6">
+          <h4 class="text-lg font-semibold mb-2 text-gray-300">Description</h4>
+          <p class="text-gray-400 mb-4">
+            Showcase your <strong>innovative ideas and research</strong> in the fields of <strong>AI and Data Science</strong>. Participants from <em>any domain</em> are welcome, but projects that include <strong>AI/DS implementation, new technologies, or models</strong> are highly preferred.
+          </p>
+          <h4 class="text-lg font-semibold mb-2 text-gray-300">Rules &amp; Regulations</h4>
+          <ul class="list-disc pl-5 text-gray-400 space-y-2 mb-4">
+            <li><strong>Team size:</strong> 2–3 members</li>
+            <li><strong>Topics:</strong> AI, ML, Data Science, latest models (domain-specific AI/DS applications preferred)</li>
+            <li><strong>Duration:</strong> 5–7 minutes + 3 minutes Q&amp;A</li>
+            <li><strong>PPT slides:</strong> Maximum 10</li>
+            <li>Submit slides in advance to: <span class="font-semibold text-blue-400">algonest49@gmail.com</span></li>
+            <li><strong>Deadline:</strong> September 17, 2025, 11:59 PM</li>
+          </ul>
+          <h4 class="text-lg font-semibold mb-2 text-gray-300">Recognitions</h4>
+          <ul class="list-disc pl-5 text-gray-400 space-y-2">
+            <li>1st Place – <strong>Shield + Certificate of Excellence</strong></li>
+            <li>2nd Place – <strong>Shield + Certificate of Excellence</strong></li>
+          </ul>
+        </div>
+        <div class="flex flex-col sm:flex-row gap-4">
+          <button onclick="closeModal('paper-presentation')" class="px-6 py-2 border border-gray-600 text-gray-300 font-medium rounded-lg hover:bg-gray-800 transition duration-300">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
     <!-- Data Analysis Modal -->
-    <div id="data-analysis-modal" class="modal fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 opacity-0 invisible transition-all duration-300">
-        <div class="event-card max-w-2xl w-full mx-4 max-h-[90vh] overflow-y-auto">
-            <div class="p-6">
-                <div class="flex justify-between items-start mb-4">
-                    <h3 class="text-2xl font-bold text-purple-400">Data Analysis</h3>
-                    <button onclick="closeModal('data-analysis')" class="text-gray-400 hover:text-white">
-                        <i class="fas fa-times text-xl"></i>
-                    </button>
-                </div>
-                <div class="mb-6">
-                    <h4 class="text-lg font-semibold mb-2 text-gray-300">Description</h4>
-                    <p class="text-gray-400 mb-4">
-                        Showcase your analytical skills by deriving insights from complex datasets. 
-                        This event allows you to demonstrate your ability to extract meaningful information from data. Participants will be given a dataset and specific questions to answer through their analysis.
-                    </p>
-                    <h4 class="text-lg font-semibold mb-2 text-gray-300">Rules & Regulations</h4>
-                    <ul class="list-disc pl-5 text-gray-400 space-y-2 mb-4">
-                        <li>Team of 1 to 2 members</li>
-                        <li>Duration: 30 minutes</li>
-                        <li>Allowed tools: Python, R, Excel, PowerBI</li>
-                        <li>Internet access will be restricted</li>
-                        <li>Pre-installed software only</li>
-                        <li>Final submission should include code and report</li>
-                    </ul>
-                    <h4 class="text-lg font-semibold mb-2 text-gray-300">Recognitions
-                    <ul class="list-disc pl-5 text-gray-400 space-y-2">
-                        <li>1st Place - Shield + Certificate of Excellance</li>
-                        <li>2nd Place - Shield + Certificate of Excellance</li>
-                    </ul>
-                </div>
-                <div class="flex flexocol sm:flex-row gap-4">
-                    
-                    <button onclick="closeModal('data-analysis')" class="px-6 py-2 border border-gray-600 text-gray-300 font-medium rounded-lg hover:bg-gray-800 transition duration-300">
-                        Close
-                    </button>
-                </div>
-            </div>
+  <div id="data-analysis-modal" class="modal fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 opacity-0 invisible transition-all duration-300">
+    <div class="event-card max-w-2xl w-full mx-4 max-h-[90vh] overflow-y-auto">
+      <div class="p-6">
+        <div class="flex justify-between items-start mb-4">
+          <h3 class="text-2xl font-bold text-purple-400"><i class="fas fa-chart-bar mr-2"></i>Data Analysis</h3>
+          <button onclick="closeModal('data-analysis')" class="text-gray-400 hover:text-white">
+            <i class="fas fa-times text-xl"></i>
+          </button>
         </div>
+        <div class="mb-6">
+          <h4 class="text-lg font-semibold mb-2 text-gray-300">Description</h4>
+          <p class="text-gray-400 mb-4">
+            Analyze a dataset and extract meaningful insights. Show your skills in data-driven decision-making by answering specific questions using analysis tools.
+          </p>
+          <h4 class="text-lg font-semibold mb-2 text-gray-300">Rules &amp; Regulations</h4>
+          <ul class="list-disc pl-5 text-gray-400 space-y-2 mb-4">
+            <li><strong>Team size:</strong> 1–2 members</li>
+            <li><strong>Duration:</strong> 30 minutes</li>
+            <li><strong>Tools allowed:</strong> Python, R, Excel, PowerBI (pre-installed only, no internet)</li>
+            <li>Submission must include both code and report</li>
+          </ul>
+          <h4 class="text-lg font-semibold mb-2 text-gray-300">Recognitions</h4>
+          <ul class="list-disc pl-5 text-gray-400 space-y-2">
+            <li>1st Place – <strong>Shield + Certificate of Excellence</strong></li>
+            <li>2nd Place – <strong>Shield + Certificate of Excellence</strong></li>
+          </ul>
+        </div>
+        <div class="flex flex-col sm:flex-row gap-4">
+          <button onclick="closeModal('data-analysis')" class="px-6 py-2 border border-gray-600 text-gray-300 font-medium rounded-lg hover:bg-gray-800 transition duration-300">Close</button>
+        </div>
+      </div>
     </div>
-
+  </div>
     <!-- AI Art Battle Modal -->
-    <div id="ai-art-battle-modal" class="modal fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 opacity-0 invisible transition-all duration-300">
-        <div class="event-card max-w-2xl w-full mx-4 max-h-[90vh] overflow-y-auto">
-            <div class="p-6">
-                <div class="flex justify-between items-start mb-4">
-                    <h3 class="text-2xl font-bold text-pink-400">AI Art Battle</h3>
-                    <button onclick="closeModal('ai-art-battle')" class="text-gray-400 hover:text-white">
-                        <i class="fas fa-times text-xl"></i>
-                    </button>
-                </div>
-                <div class="mb-6">
-                    <h4 class="text-lg font-semibold mb-2 text-gray-300">Description</h4>
-                    <p class="text-gray-400 mb-4">
-                        Recreate the given image using AI tools within the time limit. The closer your artwork matches the original, the higher your chance to win!
-                    </p>
-                    <h4 class="text-lg font-semibold mb-2 text-gray-300">Rules & Regulations</h4>
-                    <ul class="list-disc pl-5 text-gray-400 space-y-2 mb-4">
-                        <li>An original image will be shown to participants.</li>
-                        <li>Participants must recreate the same image using AI tools.</li>
-                        <li>Only approved AI tools (DALL·E, ChatGPT, Stable Diffusion, etc.) are allowed.</li>
-                        <li>Time limit: 15-20 minutes.</li>
-                        <li>Rewards will be given based on accuracy, similarity, and clarity of the recreated image</li>
-                    </ul>
-                    <h4 class="text-lg font-semibold mb-2 text-gray-300">Recognitions
-                    <ul class="list-disc pl-5 text-gray-400 space-y-2">
-                        <li>1st Place - Shield + Certificate of Excellance</li>
-                        <li>2nd Place - Shield + Certificate of Excellance</li>
-                    </ul>
-                </div>
-                <div class="flex flex-col sm:flex-row gap-4">
-                   
-                    <button onclick="closeModal('ai-art-battle')" class="px-6 py-2 border border-gray-600 text-gray-300 font-medium rounded-lg hover:bg-gray-800 transition duration-300">
-                        Close
-                    </button>
-                </div>
-            </div>
+  <div id="ai-art-battle-modal" class="modal fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 opacity-0 invisible transition-all duration-300">
+    <div class="event-card max-w-2xl w-full mx-4 max-h-[90vh] overflow-y-auto">
+      <div class="p-6">
+        <div class="flex justify-between items-start mb-4">
+          <h3 class="text-2xl font-bold text-pink-400"><i class="fas fa-paint-brush mr-2"></i>AI Art Battle</h3>
+          <button onclick="closeModal('ai-art-battle')" class="text-gray-400 hover:text-white">
+            <i class="fas fa-times text-xl"></i>
+          </button>
         </div>
+        <div class="mb-6">
+          <h4 class="text-lg font-semibold mb-2 text-gray-300">Description</h4>
+          <p class="text-gray-400 mb-4">
+            Recreate the given image using AI tools within the time limit. Accuracy, creativity, and clarity will decide the winners.
+          </p>
+          <h4 class="text-lg font-semibold mb-2 text-gray-300">Rules &amp; Regulations</h4>
+          <ul class="list-disc pl-5 text-gray-400 space-y-2 mb-4">
+            <li><strong>Team size:</strong> max 2 members</li>
+            <li><strong>Tools allowed:</strong> DALL·E, ChatGPT, Stable Diffusion, or other approved AI tools</li>
+            <li><strong>Time limit:</strong> 15–20 minutes</li>
+          </ul>
+          <h4 class="text-lg font-semibold mb-2 text-gray-300">Recognitions</h4>
+          <ul class="list-disc pl-5 text-gray-400 space-y-2">
+            <li>1st Place – <strong>Shield + Certificate of Excellence</strong></li>
+            <li>2nd Place – <strong>Shield + Certificate of Excellence</strong></li>
+          </ul>
+        </div>
+        <div class="flex flex-col sm:flex-row gap-4">
+          <button onclick="closeModal('ai-art-battle')" class="px-6 py-2 border border-gray-600 text-gray-300 font-medium rounded-lg hover:bg-gray-800 transition duration-300">Close</button>
+        </div>
+      </div>
     </div>
+  </div>
 
-    <!-- Creative Animations Modal -->
+        <!-- Creative Animations Modal -->
     <div id="creative-animations-modal" class="modal fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 opacity-0 invisible transition-all duration-300">
-        <div class="event-card max-w-2xl w-full mx-4 max-h-[90vh] overflow-y-auto">
-            <div class="p-6">
-                <div class="flex justify-between items-start mb-4">
-                    <h3 class="text-2xl font-bold text-orange-400">Creative Animations</h3>
-                    <button onclick="closeModal('creative-animations')" class="text-gray-400 hover:text-white">
-                        <i class="fas fa-times text-xl"></i>
-                    </button>
-                </div>
-                <div class="mb-6">
-                    <h4 class="text-lg font-semibold mb-2 text-gray-300">Description</h4>
-                    <p class="text-gray-400 mb-4">
-                        Showcase your animation skills and creativity in this visual storytelling event. Create short animations on given themes using any animation software.
-                    </p>
-                    <h4 class="text-lg font-semibold mb-2 text-gray-300">Rules & Regulations</h4>
-                    <ul class="list-disc pl-5 text-gray-400 space-y-2 mb-4">
-                        <li>Individual or team (max 3 members)</li>
-                        <li>Allowed tools: Pencil2D or any other 2D animation software.</li>
-                        <li>Theme will be given on the spot.</li>
-                        <li>Content must be original and free from plagiarism.</li>
-                        <li>Inappropriate, offensive, or copyrighted material is not allowed.</li>
-                        <li>Judging will be based on creativity, originality, smoothness, and presentation.</li>
-                        <li>Video Duration: 10-30 seconds</li>
-                        <li>Time limit : 30 minutes</li>
-                    </ul>
-                    <h4 class="text-lg font-semibold mb-2 text-gray-300">Recognitions</h4>
-                    <ul class="list-disc pl-5 text-gray-400 space-y-2">
-                        <li>1st Place - Shield + Certificate of Excellance</li>
-                        <li>2nd Place - Shield + Certificate of Excellance</li>
-                    </ul>
-                </div>
-                <div class="flex flexocol sm:flex-row gap-4">
-                   
-                    <button onclick="closeModal('creative-animations')" class="px-6 py-2 border border-gray-600 text-gray-300 font-medium rounded-lg hover:bg-gray-800 transition duration-300">
-                        Close
-                    </button>
-                </div>
-            </div>
+    <div class="event-card max-w-2xl w-full mx-4 max-h-[90vh] overflow-y-auto">
+        <div class="p-6">
+        <div class="flex justify-between items-start mb-4">
+            <h3 class="text-2xl font-bold text-orange-400"><i class="fas fa-film mr-2"></i>Creative Animations</h3>
+            <button onclick="closeModal('creative-animations')" class="text-gray-400 hover:text-white">
+            <i class="fas fa-times text-xl"></i>
+            </button>
+        </div>
+        <div class="mb-6">
+            <h4 class="text-lg font-semibold mb-2 text-gray-300">Description</h4>
+            <p class="text-gray-400 mb-4">
+            Showcase your <strong>animation skills and creativity</strong>. Create short animations on given themes using your favorite software.
+            </p>
+            <h4 class="text-lg font-semibold mb-2 text-gray-300">Rules &amp; Regulations</h4>
+            <ul class="list-disc pl-5 text-gray-400 space-y-2 mb-4">
+            <li><strong>Team size:</strong> Individual or up to 3 members</li>
+            <li><strong>Tools:</strong> Pencil2D or any 2D animation software</li>
+            <li><strong>Theme:</strong> Will be given on the spot</li>
+            <li>Content must be <strong>original</strong> and plagiarism-free</li>
+            <li>No <strong>inappropriate or copyrighted</strong> material allowed</li>
+            <li><strong>Video duration:</strong> 10–30 seconds</li>
+            <li><strong>Time limit:</strong> 30 minutes</li>
+            </ul>
+            <h4 class="text-lg font-semibold mb-2 text-gray-300">Recognitions</h4>
+            <ul class="list-disc pl-5 text-gray-400 space-y-2">
+            <li>1st Place – <strong>Shield + Certificate of Excellence</strong></li>
+            <li>2nd Place – <strong>Shield + Certificate of Excellence</strong></li>
+            </ul>
+        </div>
+        <div class="flex flex-col sm:flex-row gap-4">
+            <button onclick="closeModal('creative-animations')" class="px-6 py-2 border border-gray-600 text-gray-300 font-medium rounded-lg hover:bg-gray-800 transition duration-300">Close</button>
+        </div>
         </div>
     </div>
-
-    <!-- Non-Technical Event Modals -->
-    <!-- Just A Minute Modal -->
+    </div>
+        <!-- Non-Technical Event Modals -->
+        <!-- Just A Minute Modal -->
     <div id="just-a-minute-modal" class="modal fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 opacity-0 invisible transition-all duration-300">
-        <div class="event-card max-w-2xl w-full mx-4 max-h-[90vh] overflow-y-auto">
-            <div class="p-6">
-                <div class="flex justify-between items-start mb-4">
-                    <h3 class="text-2xl font-bold text-green-400">Just A Minute</h3>
-                    <button onclick="closeModal('just-a-minute')" class="text-gray-400 hover:text-white">
-                        <i class="fas fa-times text-xl"></i>
-                    </button>
-                </div>
-                <div class="mb-6">
-                    <h4 class="text-lg font-semibold mb-2 text-gray-300">Description</h4>
-                    <p class="text-gray-400 mb-4">
-                        Speak on a given topic for one minute without hesitation, repetition, or deviation. Quick thinking wins!
-                    </p>
-                    <p class="text-gray-400 mb-4">
-                    </p>
-                    <h4 class="text-lg font-semibold mb-2 text-gray-300">Rules & Regulations</h4>
-                    <ul class="list-disc pl-5 text-gray-400 space-y-2 mb-4">
-                        <li>Each participant will be given one paper with information.</li>
-                        <li>One minute is given to read and memorize the content.</li>
-                        <li>Participants must recall the content within the given time.</li>
-                        <li>Marks are awarded based on accuracy, completeness, and clarity.</li>
-                        <li>Any use of mobile phones or external help is strictly prohibited.</li>
-                    </ul>
-                    <h4 class="text-lg font-semibold mb-2 text-gray-300">Recognitions</h4>
-                    <ul class="list-disc pl-5 text-gray-400 space-y-2">
-                        <li>1st Place - Shield + Certificate of Excellance</li>
-                        <li>2nd Place - Certificate of Excellance</li>
-                    </ul>
-                </div>
-                <div class="flex flex-col sm:flex-row gap-4">
-                    
-                    <button onclick="closeModal('just-a-minute')" class="px-6 py-2 border border-gray-600 text-gray-300 font-medium rounded-lg hover:bg-gray-800 transition duration-300">
-                        Close
-                    </button>
-                </div>
-            </div>
+    <div class="event-card max-w-2xl w-full mx-4 max-h-[90vh] overflow-y-auto">
+        <div class="p-6">
+        <div class="flex justify-between items-start mb-4">
+            <h3 class="text-2xl font-bold text-green-400"><i class="fas fa-microphone mr-2"></i>Just A Minute</h3>
+            <button onclick="closeModal('just-a-minute')" class="text-gray-400 hover:text-white">
+            <i class="fas fa-times text-xl"></i>
+            </button>
+        </div>
+        <div class="mb-6">
+            <h4 class="text-lg font-semibold mb-2 text-gray-300">Description</h4>
+            <p class="text-gray-400 mb-4">
+            Speak on a given topic for one minute <strong>without hesitation, repetition, or deviation</strong>. Quick thinking and clarity win!
+            </p>
+            <h4 class="text-lg font-semibold mb-2 text-gray-300">Rules &amp; Regulations</h4>
+            <ul class="list-disc pl-5 text-gray-400 space-y-2 mb-4">
+            <li><strong>Team size:</strong> 1–3 members</li>
+            <li>Each participant gets <strong>1 minute</strong> to read & memorize content</li>
+            <li>Then, recall it within the given <strong>1-minute speaking time</strong></li>
+            <li>Marks based on <strong>accuracy, completeness, and clarity</strong></li>
+            <li>No use of <strong>mobiles or external help</strong></li>
+            </ul>
+            <h4 class="text-lg font-semibold mb-2 text-gray-300">Recognitions</h4>
+            <ul class="list-disc pl-5 text-gray-400 space-y-2">
+            <li>1st Place – <strong>Shield + Certificate of Excellence</strong></li>
+            <li>2nd Place – <strong>Shield + Certificate of Excellence</strong></li>
+            </ul>
+        </div>
+        <div class="flex flex-col sm:flex-row gap-4">
+            <button onclick="closeModal('just-a-minute')" class="px-6 py-2 border border-gray-600 text-gray-300 font-medium rounded-lg hover:bg-gray-800 transition duration-300">Close</button>
+        </div>
         </div>
     </div>
-
+    </div>
     <!-- Dumb Charades Modal -->
     <div id="dumb-charades-modal" class="modal fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 opacity-0 invisible transition-all duration-300">
-        <div class="event-card max-w-2xl w-full mx-4 max-h-[90vh] overflow-y-auto">
-            <div class="p-6">
-                <div class="flex justify-between items-start mb-4">
-                    <h3 class="text-2xl font-bold text-teal-400">Dumb Charades</h3>
-                    <button onclick="closeModal('dumb-charades')" class="text-gray-400 hover:text-white">
-                        <i class="fas fa-times text-xl"></i>
-                    </button>
-                </div>
-                <div class="mb-6">
-                    <h4 class="text-lg font-semibold mb-2 text-gray-300">Description</h4>
-                    <p class="text-gray-400 mb-4">
-                       Act out movies, phrases, or words without speaking while your team guesses. Fun, fast, and full of laughter!
-                    </p>
-                    <h4 class="text-lg font-semibold mb-2 text-gray-300">Rules & Regulations</h4>
-                    <ul class="list-disc pl-5 text-gray-400 space-y-2 mb-4">
-                        <li>Team size: 2 members (for/against)</li>
-                        <li>Participants are not allowed to speak, write, or point to objects.</li>
-                        <li>Only gestures and actions can be used to convey the clue.</li>
-                        <li>Each team will be given a fixed time (e.g., 1 minute) to guess.</li>
-                        <li>Correct guesses earn points; no points for skipped or wrong answers.</li>
-                        <li>The team with the highest points at the end wins.</li>
-                    </ul>
-                    <h4 class="text-lg font-semibold mb-2 text-gray-300">Recognitions</h4>
-                    <ul class="list-disc pl-5 text-gray-400 space-y-2">
-                        <li>1st Place - Shield + Certificate of Excellance</li>
-                        <li>2nd Place - Certificate of Excellance</li>
-                    </ul>
-                </div>
-                <div class="flex flex-col sm:flex-row gap-4">
-                   
-                    <button onclick="closeModal('dumb-charades')" class="px-6 py-2 border border-gray-600 text-gray-300 font-medium rounded-lg hover:bg-gray-800 transition duration-300">
-                        Close
-                    </button>
-                </div>
-            </div>
+    <div class="event-card max-w-2xl w-full mx-4 max-h-[90vh] overflow-y-auto">
+        <div class="p-6">
+        <div class="flex justify-between items-start mb-4">
+            <h3 class="text-2xl font-bold text-teal-400"><i class="fas fa-theater-masks mr-2"></i>Dumb Charades</h3>
+            <button onclick="closeModal('dumb-charades')" class="text-gray-400 hover:text-white">
+            <i class="fas fa-times text-xl"></i>
+            </button>
+        </div>
+        <div class="mb-6">
+            <h4 class="text-lg font-semibold mb-2 text-gray-300">Description</h4>
+            <p class="text-gray-400 mb-4">
+            Act out movies, phrases, or words without speaking. Your team must guess correctly within the time limit.
+            </p>
+            <h4 class="text-lg font-semibold mb-2 text-gray-300">Rules &amp; Regulations</h4>
+            <ul class="list-disc pl-5 text-gray-400 space-y-2 mb-4">
+            <li><strong>Team size:</strong> 2–3 members</li>
+            <li>No speaking, writing, or pointing to objects</li>
+            <li>Only <strong>gestures and actions</strong> allowed</li>
+            <li><strong>Time limit:</strong> 1 minute per round</li>
+            <li>Correct guesses earn points, wrong ones score zero</li>
+            </ul>
+            <h4 class="text-lg font-semibold mb-2 text-gray-300">Recognitions</h4>
+            <ul class="list-disc pl-5 text-gray-400 space-y-2">
+            <li>1st Place – <strong>Shield + Certificate of Excellence</strong></li>
+            <li>2nd Place – <strong>Shield + Certificate of Excellence</strong></li>
+            </ul>
+        </div>
+        <div class="flex flex-col sm:flex-row gap-4">
+            <button onclick="closeModal('dumb-charades')" class="px-6 py-2 border border-gray-600 text-gray-300 font-medium rounded-lg hover:bg-gray-800 transition duration-300">Close</button>
+        </div>
         </div>
     </div>
+    </div>
 
-    <!-- Photography Contest Modal -->
+        <!-- Photography Contest Modal -->
     <div id="photography-contest-modal" class="modal fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 opacity-0 invisible transition-all duration-300">
-        <div class="event-card max-w-2xl w-full mx-4 max-h-[90vh] overflow-y-auto">
-            <div class="p-6">
-                <div class="flex justify-between items-start mb-4">
-                    <h3 class="text-2xl font-bold text-cyan-400">Photography Contest</h3>
-                    <button onclick="closeModal('photography-contest')" class="text-gray-400 hover:text-white">
-                        <i class="fas fa-times text-xl"></i>
-                    </button>
-                </div>
-                <div class="mb-6">
-                    <h4 class="text-lg font-semibold mb-2 text-gray-300">Description</h4>
-                    <p class="text-gray-400 mb-4">
-                        Capture moments and showcase your photography skills. Submit your best shots based on the given theme.
-                    </p>
-                    <h4 class="text-lg font-semibold mb-2 text-gray-300">Rules & Regulations</h4>
-                    <ul class="list-disc pl-5 text-gray-400 space-y-2 mb-4">
-                        <li>Individual participation only</li>
-                        <li>Theme will be given on the spot.</li>
-                        <li>Photos must be original and unedited (basic corrections allowed)</li>
-                        <li>Format: JPG, JPEG </li>
-                        <li>Both Mobile  &  DSLR allowed.</li>
-                    </ul>
-                    <h4 class="text-lg font-semibold mb-2 text-gray-300">Recognitions</h4>
-                    <ul class="list-disc pl-5 text-gray-400 space-y-2">
-                        <li>1st Prize: Shield + Certificate of Excellence</li>
-                        <li>2nd Prize: Certificate of Excellence</li>
-                    </ul>
-                </div>
-                <div class="flex flex-col sm:flex-row gap-4">
-                   
-                    <button onclick="closeModal('photography-contest')" class="px-6 py-2 border border-gray-600 text-gray-300 font-medium rounded-lg hover:bg-gray-800 transition duration-300">
-                        Close
-                    </button>
-                </div>
-            </div>
+    <div class="event-card max-w-2xl w-full mx-4 max-h-[90vh] overflow-y-auto">
+        <div class="p-6">
+        <div class="flex justify-between items-start mb-4">
+            <h3 class="text-2xl font-bold text-cyan-400"><i class="fas fa-camera mr-2"></i>Photography Contest</h3>
+            <button onclick="closeModal('photography-contest')" class="text-gray-400 hover:text-white">
+            <i class="fas fa-times text-xl"></i>
+            </button>
         </div>
+        <div class="mb-6">
+            <h4 class="text-lg font-semibold mb-2 text-gray-300">Description</h4>
+            <p class="text-gray-400 mb-4">
+            Capture and showcase your <strong>photography talent</strong> through creative shots on a given theme.
+            </p>
+            <h4 class="text-lg font-semibold mb-2 text-gray-300">Rules &amp; Regulations</h4>
+            <ul class="list-disc pl-5 text-gray-400 space-y-2 mb-4">
+            <li><strong>Individual participation only</strong></li>
+            <li><strong>Theme:</strong> Given on the spot</li>
+            <li>Photos must be <strong>original</strong> (basic corrections allowed)</li>
+            <li><strong>Format:</strong> JPG or JPEG</li>
+            <li><strong>Devices:</strong> Mobile &amp; DSLR allowed</li>
+            </ul>
+            <h4 class="text-lg font-semibold mb-2 text-gray-300">Recognitions</h4>
+            <ul class="list-disc pl-5 text-gray-400 space-y-2">
+            <li>1st Place – <strong>Shield + Certificate of Excellence</strong></li>
+            <li>2nd Place – <strong>Shield + Certificate of Excellence</strong></li>
+            </ul>
+        </div>
+        <div class="flex flex-col sm:flex-row gap-4">
+            <button onclick="closeModal('photography-contest')" class="px-6 py-2 border border-gray-600 text-gray-300 font-medium rounded-lg hover:bg-gray-800 transition duration-300">Close</button>
+        </div>
+        </div>
+    </div>
     </div>
 
     <!-- BGM Finding Modal -->
     <div id="bgm-finding-modal" class="modal fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 opacity-0 invisible transition-all duration-300">
-        <div class="event-card max-w-2xl w-full mx-4 max-h-[90vh] overflow-y-auto">
-            <div class="p-6">
-                <div class="flex justify-between items-start mb-4">
-                    <h3 class="text-2xl font-bold text-yellow-400">BGM Finding</h3>
-                    <button onclick="closeModal('bgm-finding')" class="text-gray-400 hover:text-white">
-                        <i class="fas fa-times text-xl"></i>
-                    </button>
-                </div>
-                <div class="mb-6">
-                    <h4 class="text-lg font-semibold mb-2 text-gray-300">Description</h4>
-                    <p class="text-gray-400 mb-4">
-                        Solve clues and find hidden treasures in this exciting adventure across the college campus. Test your problem-solving skills and teamwork.
-                    </p>
-                    <h4 class="text-lg font-semibold mb-2 text-gray-300">Rules & Regulations</h4>
-                    <ul class="list-disc pl-5 text-gray-400 space-y-2 mb-4">
-                        <li>Team size: 1-3 members</li>
-                        <li>Music clips will be played for a few seconds only.</li>
-                        <li>Participants must identify the correct movie/series/song within the given time.</li>
-                        <li>No use of mobile phones or external help is allowed.</li>
-                        <li>Points are awarded for accuracy and speed.</li>
-                        <li>In case of a tie, a bonus round will decide the winner.</li>
-                    </ul>
-                    <h4 class="text-lg font-semibold mb-2 text-gray-300">Recognitions</h4>
-                    <ul class="list-disc pl-5 text-gray-400 space-y-2">
-                        <li>1st Prize: Certificate of Excellence</li>
-                        <li>2nd Prize: Certificate of Excellence</li>
-                    </ul>
-                </div>
-                <div class="flex flex-col sm:flex-row gap-4">
-                    
-                    <button onclick="closeModal('bgm-finding')" class="px-6 py-2 border border-gray-600 text-gray-300 font-medium rounded-lg hover:bg-gray-800 transition duration-300">
-                        Close
-                    </button>
-                </div>
-            </div>
+    <div class="event-card max-w-2xl w-full mx-4 max-h-[90vh] overflow-y-auto">
+        <div class="p-6">
+        <div class="flex justify-between items-start mb-4">
+            <h3 class="text-2xl font-bold text-yellow-400"><i class="fas fa-music mr-2"></i>BGM Finding</h3>
+            <button onclick="closeModal('bgm-finding')" class="text-gray-400 hover:text-white">
+            <i class="fas fa-times text-xl"></i>
+            </button>
         </div>
+        <div class="mb-6">
+            <h4 class="text-lg font-semibold mb-2 text-gray-300">Description</h4>
+            <p class="text-gray-400 mb-4">
+            Test your <strong>music recognition skills</strong>. Identify the correct movie, series, or song from short audio clips.
+            </p>
+            <h4 class="text-lg font-semibold mb-2 text-gray-300">Rules &amp; Regulations</h4>
+            <ul class="list-disc pl-5 text-gray-400 space-y-2 mb-4">
+            <li><strong>Team size:</strong> 1–3 members</li>
+            <li><strong>Clips:</strong> Played only for a few seconds</li>
+            <li>No <strong>mobile phones or external help</strong> allowed</li>
+            <li>Points awarded for <strong>accuracy and speed</strong></li>
+            <li>In case of a tie, a <strong>bonus round</strong> decides the winner</li>
+            </ul>
+            <h4 class="text-lg font-semibold mb-2 text-gray-300">Recognitions</h4>
+            <ul class="list-disc pl-5 text-gray-400 space-y-2">
+            <li>1st Place – <strong>Shield + Certificate of Excellence</strong></li>
+            <li>2nd Place – <strong>Shield + Certificate of Excellence</strong></li>
+            </ul>
+        </div>
+        <div class="flex flex-col sm:flex-row gap-4">
+            <button onclick="closeModal('bgm-finding')" class="px-6 py-2 border border-gray-600 text-gray-300 font-medium rounded-lg hover:bg-gray-800 transition duration-300">Close</button>
+        </div>
+        </div>
+    </div>
     </div>
 
     <script>
@@ -993,6 +966,27 @@
                 this.reset();
             });
         }
+        // Countdown Timer Script
+        const eventDate = new Date("Sep 19, 2025 09:00:00 GMT+0530").getTime(); // IST 9:00 AM
+
+        const countdownFunction = setInterval(function () {
+            const now = new Date().getTime();
+            const distance = eventDate - now;
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            if (distance > 0) {
+            document.getElementById("countdown").innerHTML =
+                '<i class="fas fa-hourglass-half mr-2"></i>' +
+                days + "d : " + hours + "h : " + minutes + "m : " + seconds + "s";
+            } else {
+            clearInterval(countdownFunction);
+            document.getElementById("countdown").innerHTML = "🎉 The Event Has Started!";
+            }
+        }, 1000);
     </script>
 </body>
 </html>
